@@ -1,6 +1,7 @@
 {
-  "name": "@s2t/accelerators-mcp",
+  "name": "@s2tconsulting/accelerators-mcp",
   "version": "1.0.0",
+  "mcpName": "io.github.s2tconsulting/accelerators",
   "description": "MCP server for S2T Accelerator Platform - Vector embeddings, CloudFormation generation, OAuth validation",
   "main": "dist/index.js",
   "bin": {
