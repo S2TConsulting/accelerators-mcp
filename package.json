@@ -1,11 +1,11 @@
 {
-  "name": "@s2tconsulting/accelerators-mcp",
-  "version": "1.0.0",
-  "mcpName": "io.github.s2tconsulting/accelerators",
-  "description": "MCP server for S2T Accelerator Platform - Vector embeddings, CloudFormation generation, OAuth validation",
+  "name": "s2t-mcp-accelerators",
+  "version": "1.2.0",
+  "mcpName": "io.github.S2TConsulting/accelerators",
+  "description": "MCP server for S2T Accelerator Platform - Vector embeddings, CloudFormation/DynamoDB generation, OAuth/IAM/MFA validation, Error analysis, Data Lake readiness, Agent governance, Resilience patterns, Multi-agent orchestration",
   "main": "dist/index.js",
   "bin": {
-    "s2t-accelerators-mcp": "./dist/index.js"
+    "s2t-mcp-accelerators": "./dist/index.js"
   },
   "type": "module",
   "scripts": {
@@ -14,16 +14,43 @@
     "dev": "tsx src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
     "mcp",
+    "model-context-protocol",
     "claude",
     "ai",
     "accelerators",
     "embeddings",
+    "vector-embeddings",
     "cloudformation",
-    "oauth"
+    "sam",
+    "aws",
+    "oauth",
+    "oauth2",
+    "infrastructure-as-code",
+    "rag",
+    "semantic-search",
+    "dynamodb",
+    "single-table-design",
+    "mfa",
+    "iam",
+    "security",
+    "data-lake",
+    "error-analysis",
+    "agent-governance",
+    "autonomy",
+    "risk-classification",
+    "resilience",
+    "circuit-breaker",
+    "multi-agent",
+    "orchestration",
+    "task-routing",
+    "distributed-tracing",
+    "self-healing",
+    "auto-recovery"
   ],
   "author": "S2T Consulting <shaun@s2tconsulting.com>",
   "license": "MIT",
@@ -40,11 +67,17 @@
     "node": ">=18.0.0"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/S2TConsulting/accelerators-mcp"
+    "url": "git+https://github.com/S2TConsulting/accelerators-mcp.git"
+  },
+  "homepage": "https://www.s2tconsulting.com/accelerators",
+  "bugs": {
+    "url": "https://github.com/S2TConsulting/accelerators-mcp/issues"
   },
   "overrides": {
     "hono": "^4.11.7",

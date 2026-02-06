@@ -1,7 +1,8 @@
 # S2T Accelerators MCP Server
 
-[![npm version](https://badge.fury.io/js/%40s2t%2Faccelerators-mcp.svg)](https://www.npmjs.com/package/@s2t/accelerators-mcp)
+[![npm version](https://img.shields.io/npm/v/s2t-mcp-accelerators.svg)](https://www.npmjs.com/package/s2t-mcp-accelerators)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![MCP Compatible](https://img.shields.io/badge/MCP-Compatible-blue.svg)](https://modelcontextprotocol.io)
 
 MCP server providing Claude with access to S2T's battle-tested enterprise accelerators:
 
@@ -14,7 +15,7 @@ MCP server providing Claude with access to S2T's battle-tested enterprise accele
 ### 1. Install
 
 ```bash
-npm install -g @s2t/accelerators-mcp
+npm install -g s2t-mcp-accelerators
 ```
 
 ### 2. Get an API Key
@@ -33,7 +34,7 @@ Add to your Claude Desktop config file:
   "mcpServers": {
     "s2t-accelerators": {
       "command": "npx",
-      "args": ["@s2t/accelerators-mcp"],
+      "args": ["s2t-mcp-accelerators"],
       "env": {
         "S2T_API_KEY": "sk_live_your_api_key_here"
       }
@@ -123,6 +124,14 @@ npm run build
 npm test
 ```
 
+### MCP Inspector
+
+Test the server interactively with the MCP Inspector:
+
+```bash
+npx @modelcontextprotocol/inspector node dist/index.js
+```
+
 ### Running Locally
 
 ```bash
@@ -152,14 +161,14 @@ npm run test:coverage # Coverage report
 
 ### Claude Code
 
-For Claude Code projects, add to `.claude/settings.json`:
+For Claude Code projects, add to `~/.mcp.json` (or project-level `.mcp.json`):
 
 ```json
 {
   "mcpServers": {
     "s2t-accelerators": {
-      "command": "node",
-      "args": ["/path/to/accelerators-mcp/dist/index.js"],
+      "command": "npx",
+      "args": ["s2t-mcp-accelerators"],
       "env": {
         "S2T_API_KEY": "sk_live_your_api_key_here"
       }
