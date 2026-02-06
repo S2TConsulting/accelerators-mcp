@@ -177,6 +177,19 @@ For Claude Code projects, add to `~/.mcp.json` (or project-level `.mcp.json`):
 }
 ```
 
+## Contributing
+
+We welcome contributions! Here's how to get started:
+
+1. Fork the repo and create a feature branch
+2. Install dependencies: `npm install`
+3. Make your changes in `src/`
+4. Add tests for new functionality in `src/handlers.test.ts`
+5. Run the test suite: `npm test`
+6. Submit a PR with a clear description of the change
+
+Please ensure all tests pass before submitting.
+
 ## Support
 
 - **Website:** https://www.s2tconsulting.com

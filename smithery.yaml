@@ -1,0 +1,16 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      S2T_API_KEY:
+        type: string
+        description: "S2T API key for authentication. Get a free key at https://dev.s2tconsulting.com/ai-sales/purchase.html"
+    required:
+      - S2T_API_KEY
+  commandFunction: |
+    (config) => ({
+      command: 'npx',
+      args: ['-y', 's2t-mcp-accelerators'],
+      env: { S2T_API_KEY: config.S2T_API_KEY }
+    })
