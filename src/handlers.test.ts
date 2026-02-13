@@ -614,7 +614,7 @@ describe("handleRiskClassify", () => {
 
     expect(result).toContain("destructiveness");
     expect(result).toContain("Proceed with logging");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 
   it("should propagate API errors", async () => {
@@ -680,7 +680,7 @@ describe("handleTaskRouting", () => {
 
     expect(result).toContain("Deployment Agent");
     expect(result).toContain("Lambda Edge Agent");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 
   it("should propagate API errors", async () => {
@@ -748,7 +748,7 @@ describe("handlePredictIssues", () => {
     const result = await handlePredictIssues({}, mockClient);
 
     expect(result).toContain("100");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 
@@ -811,7 +811,7 @@ describe("handleAutoRecovery", () => {
 
     expect(result).toContain("95");
     expect(result).toContain("92");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 
@@ -869,7 +869,7 @@ describe("handleResilienceExecute", () => {
 
     expect(result).toContain("1523");
     expect(result).toContain("closed");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 
@@ -989,7 +989,7 @@ describe("handleAgentTask", () => {
     );
 
     expect(result).toContain("3");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 
   it("should handle rejected tasks", async () => {
@@ -1051,7 +1051,7 @@ describe("handleTraceContext", () => {
 
     expect(result).toContain("00");
     expect(result).toContain("2026-02-06");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 
@@ -1113,7 +1113,7 @@ describe("handleFileLock", () => {
 
     expect(result).toContain("BLOCKED");
     expect(result).toContain("agent-abc");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 
@@ -1170,7 +1170,7 @@ describe("handleCliReadiness", () => {
     expect(result).toContain("NOT READY");
     expect(result).toContain("api-fallback");
     expect(result).toContain("Install Codex CLI");
-    expect(result).toContain("55 Battle-Tested Accelerators");
+    expect(result).toContain("36 Production-Ready Tools");
   });
 });
 

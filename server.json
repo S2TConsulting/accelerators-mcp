@@ -1,0 +1,258 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.S2TConsulting/accelerators",
+  "description": "36 production-ready tools for AWS infrastructure, security compliance, AI workflows, agent orchestration, and ACI governance. Includes IAM/MFA validation, CloudFormation/DynamoDB generation, OAuth validation, vector embeddings, error analysis, data lake readiness, risk classification, task routing, and 12 autonomous governance tools with append-only audit trails.",
+  "repository": {
+    "url": "https://github.com/S2TConsulting/accelerators-mcp",
+    "source": "github"
+  },
+  "version": "1.4.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "s2t-mcp-accelerators",
+      "version": "1.4.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "S2T_API_KEY",
+          "description": "Your S2T Accelerator Platform API key. Get one free at https://dev.s2tconsulting.com/ai-sales/purchase.html",
+          "isRequired": true,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "remoteEndpoints": [
+    {
+      "url": "https://mcp.s2tconsulting.com/mcp",
+      "transport": "streamable-http",
+      "status": "roadmap-q2-2026",
+      "authentication": {
+        "type": "api_key",
+        "header": "X-S2T-API-Key"
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "s2t_embed",
+      "title": "Generate Vector Embeddings",
+      "description": "Generate vector embeddings for text using Amazon Bedrock Titan models. Supports automatic chunking for long documents. Use when building RAG pipelines, semantic search, document similarity, or knowledge base indexing. Returns embedding vectors with chunk metadata.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_generate_cloudformation",
+      "title": "Generate CloudFormation Template",
+      "description": "Generate production-ready SAM or CloudFormation templates from natural language descriptions. Creates Lambda functions, API Gateway, DynamoDB tables, and S3 buckets with security best practices.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_validate_oauth",
+      "title": "Validate OAuth Configuration",
+      "description": "Validate an OAuth 2.0 configuration and detect common misconfigurations before deployment. Supports Google, Microsoft, GitHub, QuickBooks, and generic OpenID Connect providers.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_validate_iam_policy",
+      "title": "Validate IAM Policy",
+      "description": "Validate an AWS IAM policy document for security best practices. Detects overly permissive permissions, dangerous action wildcards, and missing resource scoping. Returns security score (0-100) with categorized findings.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_validate_mfa_compliance",
+      "title": "Check MFA Compliance",
+      "description": "Validate IAM users and root account for MFA compliance. Checks console access, programmatic access, hardware vs virtual MFA, and policy-level MFA conditions.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_generate_dynamodb_design",
+      "title": "Design DynamoDB Table",
+      "description": "Generate optimal DynamoDB single-table designs from entity and access pattern descriptions. Returns key schema, GSI recommendations, entity mappings, and deployable CloudFormation template.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_analyze_error_patterns",
+      "title": "Analyze Error Patterns",
+      "description": "Analyze application error logs to identify recurring patterns, root causes, and trends. Returns categorized patterns with severity and remediation suggestions.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_check_data_lake_readiness",
+      "title": "Assess Data Lake Readiness",
+      "description": "Assess data lake architecture readiness for production deployment. Evaluates S3 storage, Glue catalog, security controls, query performance, and operational tooling. Returns readiness score (0-100).",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_classify_action_risk",
+      "title": "Classify Action Risk",
+      "description": "Classify an action's risk level as LOW, MEDIUM, HIGH, or CRITICAL based on blast radius, reversibility, and target environment. Use for AI agent safety guardrails and graduated autonomy.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_route_task_to_agent",
+      "title": "Route Task to Agent",
+      "description": "Route a task to the optimal AI agent using semantic similarity matching against 54 specialized agent domains. Returns ranked agent candidates with confidence scores.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_predict_system_issues",
+      "title": "Predict System Issues",
+      "description": "Predict upcoming system issues by analyzing budget trends, error rates, dependency health, and certificate expiry. Returns prioritized predictions with severity and recommended actions.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_attempt_auto_recovery",
+      "title": "Auto-Recovery Lookup",
+      "description": "Match an error against known patterns and suggest automated recovery steps. Returns matched patterns with historical success rates and step-by-step recovery instructions.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_execute_with_resilience",
+      "title": "Configure Resilience Pattern",
+      "description": "Configure resilience patterns (retry with exponential backoff, circuit breaker) for an operation. Returns execution configuration with retry metrics and circuit breaker state.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_manage_agent_memory",
+      "title": "Manage Agent Memory",
+      "description": "Store, retrieve, search, or delete persistent agent memory with namespace isolation. Use for maintaining agent state across sessions or sharing context between agents.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_submit_agent_task",
+      "title": "Submit Agent Task",
+      "description": "Submit a task to the SQS FIFO queue for asynchronous multi-agent execution. Returns task ID and queue position for tracking.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_create_trace_context",
+      "title": "Create Trace Context",
+      "description": "Generate W3C Trace Context identifiers (traceparent + tracestate) for distributed tracing across multi-agent workflows. Returns W3C-compliant trace headers.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_acquire_file_lock",
+      "title": "File Lock Manager",
+      "description": "Acquire, release, or check file-based mutex locks with stale lock detection. Use to prevent concurrent file access conflicts in multi-agent environments.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_validate_cli_readiness",
+      "title": "Validate CLI Readiness",
+      "description": "Validate CLI tool availability and API key health on the current system. Returns readiness status per tool with degradation mode recommendations.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_catalog",
+      "title": "List Accelerators",
+      "description": "List all available S2T accelerators with their capabilities, pricing tiers, and current usage information. Use to discover available tools or review pricing.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_usage",
+      "title": "Get API Usage",
+      "description": "Get your current API usage statistics and remaining quota for the billing period. Returns requests made, tokens used, remaining quota, and current tier.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_classify_decision",
+      "title": "Classify Agent Decision",
+      "description": "Classify an AI agent action as APPROVE, ESCALATE, or BLOCK with rule-based analysis and domain scoring. Primary governance gate for agent actions. Records append-only audit entry.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "aci_financial_gate",
+      "title": "Financial Impact Gate",
+      "description": "Estimate financial impact of an action and determine if it passes budget gates. Returns cost breakdown, budget impact analysis, and APPROVE/ESCALATE/BLOCK decision.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "aci_compliance_check",
+      "title": "Compliance Framework Check",
+      "description": "Evaluate an action against compliance frameworks (SOC2, GDPR, HIPAA, PCI-DSS). Returns framework-specific violations, warnings, and remediation steps.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_route_domain",
+      "title": "Route to Domain Expert",
+      "description": "Route a governance task to the appropriate domain expert agent(s) with sensitivity tagging and parallel review recommendations.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_parallel_review",
+      "title": "Initiate Parallel Review",
+      "description": "Initiate parallel governance review across multiple domain agents (security, financial, legal, ops, compliance, data). Returns session ID for tracking.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "aci_synthesize_reviews",
+      "title": "Synthesize Review Results",
+      "description": "Collect and synthesize results from a parallel governance review session. Produces a unified APPROVE/ESCALATE/BLOCK decision from individual reviewer assessments.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_log_decision",
+      "title": "Log Governance Decision",
+      "description": "Record a governance decision in the append-only audit log. Use for manual human approvals or out-of-band escalations. Returns decision ID and timestamp.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "aci_recall_precedent",
+      "title": "Search Decision Precedents",
+      "description": "Semantic search over past governance decisions to find similar precedents. Returns top-K precedents with similarity scores and outcomes.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_record_outcome",
+      "title": "Record Decision Outcome",
+      "description": "Record the actual outcome of a previously classified governance decision. Feeds the calibration loop to improve future classification accuracy.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_estimate_blast_radius",
+      "title": "Estimate Blast Radius",
+      "description": "Estimate the blast radius of a proposed action -- affected systems, users, data records, cascade depth, and recovery time.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_generate_rollback",
+      "title": "Generate Rollback Plan",
+      "description": "Generate a step-by-step rollback plan for a proposed action. Includes commands, expected durations, prerequisites, and warnings.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "aci_governance_health",
+      "title": "Governance Health Metrics",
+      "description": "Get aggregate governance health metrics. Returns classification distribution, calibration accuracy, false positive/negative rates, and overall health score.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_interview_create",
+      "title": "Create Interview Session",
+      "description": "Create a stakeholder interview session for S2T process discovery. Returns a session token for conducting the interview. Local tool -- no API key charges.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_interview_message",
+      "title": "Send Interview Message",
+      "description": "Send a message in an active interview session and receive the next adaptive question. Local tool -- no API key charges.",
+      "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_interview_summary",
+      "title": "Generate Interview Summary",
+      "description": "Generate an AI summary from an interview session's transcript. Includes key findings, pain points, time/cost estimates, and prioritized recommendations. Local tool -- no API key charges.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    },
+    {
+      "name": "s2t_interview_list",
+      "title": "List Interview Sessions",
+      "description": "List all interview sessions with optional status filter. Returns session metadata including customer name, stakeholder, and creation time. Local tool -- no API key charges.",
+      "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
+    }
+  ]
+}

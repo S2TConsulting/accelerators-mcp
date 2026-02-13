@@ -1,17 +1,21 @@
 {
   "name": "s2t-mcp-accelerators",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "mcpName": "io.github.S2TConsulting/accelerators",
-  "description": "MCP server for S2T Accelerator Platform - Vector embeddings, CloudFormation/DynamoDB generation, OAuth/IAM/MFA validation, Error analysis, Data Lake readiness, Agent governance, Resilience patterns, Multi-agent orchestration",
+  "description": "MCP server with 36 enterprise tools: vector embeddings, CloudFormation/DynamoDB generation, OAuth/IAM/MFA validation, error analysis, data lake readiness, agent orchestration, resilience patterns, stakeholder interviews, and 12 ACI governance tools for AI agent safety",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
-    "s2t-mcp-accelerators": "./dist/index.js"
+    "s2t-mcp-accelerators": "./dist/index.js",
+    "s2t-mcp-accelerators-http": "./dist/http-server.js"
   },
   "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "start:http": "node dist/http-server.js",
     "dev": "tsx src/index.ts",
+    "dev:http": "tsx src/http-server.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -22,6 +26,9 @@
     "model-context-protocol",
     "claude",
     "ai",
+    "ai-governance",
+    "aci",
+    "agent-tools",
     "accelerators",
     "embeddings",
     "vector-embeddings",
@@ -50,17 +57,26 @@
     "task-routing",
     "distributed-tracing",
     "self-healing",
-    "auto-recovery"
+    "auto-recovery",
+    "openai",
+    "chatgpt",
+    "streamable-http"
   ],
   "author": "S2T Consulting <shaun@s2tconsulting.com>",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "@s2t/core": "file:../../07_WEBSITE/s2t-exec-client/packages/core",
+    "better-sqlite3": "^12.6.0",
+    "express": "^4.21.0"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "@types/express": "^5.0.0",
     "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^2.1.9",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.0",
+    "typescript": "^5.7.2",
     "vitest": "^2.0.0"
   },
   "engines": {
@@ -68,8 +84,10 @@
   },
   "files": [
     "dist/**/*",
+    "!dist/**/*.test.*",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "server.json"
   ],
   "repository": {
     "type": "git",
