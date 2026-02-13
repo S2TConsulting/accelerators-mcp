@@ -61,7 +61,7 @@ import {
 export type { ApiClient };
 
 export const SERVER_NAME = "s2t-accelerators";
-export const SERVER_VERSION = "1.4.1";
+export const SERVER_VERSION = "1.4.2";
 
 // ---------------------------------------------------------------------------
 // Tool definitions
@@ -125,9 +125,9 @@ export const TOOLS: Tool[] = [
             type: "object",
             properties: {
               message: { type: "string", minLength: 1, description: "Error message text" },
-              timestamp: { type: "string", description: "ISO 8601 timestamp of the error" },
-              source: { type: "string", description: "Source service or function name" },
-              stack_trace: { type: "string", description: "Stack trace for deeper analysis" },
+              timestamp: { type: "string", minLength: 1, maxLength: 50, description: "ISO 8601 timestamp of the error" },
+              source: { type: "string", minLength: 1, maxLength: 500, description: "Source service or function name" },
+              stack_trace: { type: "string", maxLength: 50000, description: "Stack trace for deeper analysis" },
             },
             required: ["message"],
             additionalProperties: false,
@@ -249,10 +249,12 @@ export const TOOLS: Tool[] = [
             type: "object",
             properties: {
               name: { type: "string", minLength: 1, description: "Entity name (e.g., User, Order)" },
-              description: { type: "string", description: "What this entity represents" },
+              description: { type: "string", maxLength: 500, description: "What this entity represents" },
               attributes: {
                 type: "array",
                 items: { type: "string" },
+                minItems: 1,
+                maxItems: 100,
                 description: "Key attributes of the entity",
               },
             },
@@ -818,7 +820,7 @@ export const TOOLS: Tool[] = [
           type: "object",
           description: "Additional context for classification",
           properties: {
-            source_agent: { type: "string", description: "ID of the agent requesting the action" },
+            source_agent: { type: "string", minLength: 1, maxLength: 200, description: "ID of the agent requesting the action" },
             domain: { type: "string", enum: ["security", "financial", "legal", "ops", "compliance", "data"], description: "Governance domain" },
             metadata: { type: "object", description: "Arbitrary metadata for audit trail" },
           },
@@ -864,8 +866,8 @@ export const TOOLS: Tool[] = [
           description: "Financial context for budget gate evaluation",
           properties: {
             current_monthly_spend: { type: "number", minimum: 0, description: "Current monthly spend in USD" },
-            budget_remaining: { type: "number", description: "Budget remaining for the period in USD" },
-            cost_center: { type: "string", description: "Cost center code for allocation" },
+            budget_remaining: { type: "number", minimum: 0, maximum: 100000000, description: "Budget remaining for the period in USD" },
+            cost_center: { type: "string", minLength: 1, maxLength: 100, description: "Cost center code for allocation" },
           },
           additionalProperties: false,
         },
@@ -1087,12 +1089,12 @@ export const TOOLS: Tool[] = [
           description: "Optional filters to narrow precedent search",
           properties: {
             classification: { type: "string", enum: ["APPROVE", "ESCALATE", "BLOCK"], description: "Filter by past classification" },
-            domain: { type: "string", description: "Filter by governance domain" },
+            domain: { type: "string", minLength: 1, maxLength: 100, description: "Filter by governance domain" },
             time_range: {
               type: "object",
               properties: {
-                start: { type: "string", description: "ISO 8601 start date" },
-                end: { type: "string", description: "ISO 8601 end date" },
+                start: { type: "string", minLength: 1, maxLength: 50, description: "ISO 8601 start date" },
+                end: { type: "string", minLength: 1, maxLength: 50, description: "ISO 8601 end date" },
               },
               additionalProperties: false,
             },
@@ -1166,9 +1168,9 @@ export const TOOLS: Tool[] = [
           type: "object",
           description: "Infrastructure context for more accurate estimation",
           properties: {
-            dependent_services: { type: "array", items: { type: "string" }, description: "Services that depend on the affected resource" },
+            dependent_services: { type: "array", items: { type: "string" }, minItems: 1, maxItems: 100, description: "Services that depend on the affected resource" },
             downstream_consumers: { type: "number", minimum: 0, description: "Number of downstream consumers" },
-            data_volume: { type: "string", description: "Estimated data volume affected (e.g., '50GB', '1M records')" },
+            data_volume: { type: "string", minLength: 1, maxLength: 200, description: "Estimated data volume affected (e.g., '50GB', '1M records')" },
           },
           additionalProperties: false,
         },
@@ -1202,8 +1204,8 @@ export const TOOLS: Tool[] = [
           type: "object",
           description: "State context for accurate rollback planning",
           properties: {
-            current_state: { type: "string", description: "Description of current state before action" },
-            target_state: { type: "string", description: "Description of intended state after action" },
+            current_state: { type: "string", minLength: 1, maxLength: 5000, description: "Description of current state before action" },
+            target_state: { type: "string", minLength: 1, maxLength: 5000, description: "Description of intended state after action" },
           },
           additionalProperties: false,
         },

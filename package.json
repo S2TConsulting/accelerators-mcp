@@ -1,6 +1,6 @@
 {
   "name": "s2t-mcp-accelerators",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "mcpName": "io.github.S2TConsulting/accelerators",
   "description": "MCP server with 36 enterprise tools: vector embeddings, CloudFormation/DynamoDB generation, OAuth/IAM/MFA validation, error analysis, data lake readiness, agent orchestration, resilience patterns, stakeholder interviews, and 12 ACI governance tools for AI agent safety",
   "main": "dist/index.js",
