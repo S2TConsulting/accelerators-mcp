@@ -6,12 +6,12 @@
     "url": "https://github.com/S2TConsulting/accelerators-mcp",
     "source": "github"
   },
-  "version": "1.4.0",
+  "version": "1.4.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "s2t-mcp-accelerators",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "transport": {
         "type": "stdio"
       },
@@ -161,7 +161,7 @@
     {
       "name": "aci_classify_decision",
       "title": "Classify Agent Decision",
-      "description": "Classify an AI agent action as APPROVE, ESCALATE, or BLOCK with rule-based analysis and domain scoring. Primary governance gate for agent actions. Records append-only audit entry.",
+      "description": "Classify an AI agent action as APPROVE, ESCALATE, or BLOCK. Use before any agent action affecting production, finances, or compliance. Returns classification with confidence score.",
       "annotations": { "readOnlyHint": false, "destructiveHint": false, "idempotentHint": false, "openWorldHint": false }
     },
     {
@@ -221,7 +221,7 @@
     {
       "name": "aci_generate_rollback",
       "title": "Generate Rollback Plan",
-      "description": "Generate a step-by-step rollback plan for a proposed action. Includes commands, expected durations, prerequisites, and warnings.",
+      "description": "Generate a step-by-step rollback plan for a proposed action. Use before approving high-risk operations. Returns commands, durations, and prerequisites.",
       "annotations": { "readOnlyHint": true, "destructiveHint": false, "idempotentHint": true, "openWorldHint": false }
     },
     {

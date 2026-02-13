@@ -61,7 +61,7 @@ import {
 export type { ApiClient };
 
 export const SERVER_NAME = "s2t-accelerators";
-export const SERVER_VERSION = "1.4.0";
+export const SERVER_VERSION = "1.4.1";
 
 // ---------------------------------------------------------------------------
 // Tool definitions
@@ -219,10 +219,14 @@ export const TOOLS: Tool[] = [
         },
         token_endpoint: {
           type: "string",
+          minLength: 1,
+          maxLength: 2048,
           description: "Custom token endpoint URL (required for generic provider)",
         },
         authorization_endpoint: {
           type: "string",
+          minLength: 1,
+          maxLength: 2048,
           description: "Custom authorization endpoint URL (required for generic provider)",
         },
       },
@@ -375,6 +379,8 @@ export const TOOLS: Tool[] = [
             },
             additionalProperties: false,
           },
+          minItems: 1,
+          maxItems: 500,
           description: "List of IAM users to check for MFA compliance",
         },
         root_account: {
@@ -396,6 +402,8 @@ export const TOOLS: Tool[] = [
             },
             additionalProperties: false,
           },
+          minItems: 1,
+          maxItems: 200,
           description: "IAM policies to check for MFA condition requirements",
         },
       },
@@ -790,7 +798,7 @@ export const TOOLS: Tool[] = [
     name: "aci_classify_decision",
     title: "Classify Agent Decision",
     description:
-      "Classify an AI agent action as APPROVE, ESCALATE, or BLOCK using rule-based analysis, domain scoring, and optional LLM evaluation. Use as the primary governance gate before any agent action that could affect production systems, finances, or compliance. Records an immutable audit entry as a side effect. Returns classification with confidence score and reasoning.",
+      "Classify an AI agent action as APPROVE, ESCALATE, or BLOCK using rule-based analysis, domain scoring, and optional LLM evaluation. Use before any agent action that could affect production systems, finances, or compliance -- this is the primary governance gate. Records an immutable audit entry as a side effect. Returns classification with confidence score and reasoning.",
     inputSchema: {
       type: "object",
       properties: {
@@ -1174,7 +1182,7 @@ export const TOOLS: Tool[] = [
     name: "aci_generate_rollback",
     title: "Generate Rollback Plan",
     description:
-      "Generate a step-by-step rollback plan for a proposed action. Includes commands, expected durations, prerequisites, and warnings. Use as a pre-condition before approving high-risk operations to ensure reversibility. Returns structured rollback plan. No side effects -- generates plan document only.",
+      "Generate a step-by-step rollback plan for a proposed action. Includes commands, expected durations, prerequisites, and warnings. Use before approving high-risk operations to ensure reversibility. Returns structured rollback plan. No side effects -- generates plan document only.",
     inputSchema: {
       type: "object",
       properties: {
