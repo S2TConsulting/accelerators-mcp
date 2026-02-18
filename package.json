@@ -68,7 +68,8 @@
     "@modelcontextprotocol/sdk": "^1.26.0",
     "@s2t/core": "file:../../07_WEBSITE/s2t-exec-client/packages/core",
     "better-sqlite3": "^12.6.0",
-    "express": "^4.21.0"
+    "express": "^4.21.0",
+    "s2t-mcp-accelerators": "^1.4.2"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.0",

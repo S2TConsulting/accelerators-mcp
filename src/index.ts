@@ -45,7 +45,7 @@ const API_BASE_URL =
   "https://mh873houvh.execute-api.us-east-1.amazonaws.com/v1";
 const API_KEY = process.env.S2T_API_KEY;
 
-if (!API_KEY) {
+if (!API_KEY && !process.env.SMITHERY_SCAN) {
   console.error("Error: S2T_API_KEY environment variable is required");
   console.error(
     "Get your API key at: https://dev.s2tconsulting.com/ai-sales/purchase.html"
@@ -812,6 +812,21 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     };
   }
 });
+
+// Smithery sandbox server for capability scanning
+export function createSandboxServer() {
+  const sandboxServer = new Server(
+    { name: "s2t-accelerators", version: "1.4.2" },
+    { capabilities: { tools: {} } }
+  );
+  sandboxServer.setRequestHandler(ListToolsRequestSchema, async () => ({
+    tools: TOOLS,
+  }));
+  sandboxServer.setRequestHandler(CallToolRequestSchema, async () => ({
+    content: [{ type: "text", text: "Sandbox mode - no real execution" }],
+  }));
+  return sandboxServer;
+}
 
 // Start server
 async function main() {

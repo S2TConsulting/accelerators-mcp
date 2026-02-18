@@ -13,7 +13,7 @@ import { Tool } from "@modelcontextprotocol/sdk/types.js";
 import { ApiClient } from "./handlers.js";
 export type { ApiClient };
 export declare const SERVER_NAME = "s2t-accelerators";
-export declare const SERVER_VERSION = "1.4.0";
+export declare const SERVER_VERSION = "1.4.2";
 export declare const TOOLS: Tool[];
 export declare function createApiClient(baseUrl: string, apiKey: string): ApiClient;
 /**
