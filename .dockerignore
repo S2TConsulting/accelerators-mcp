@@ -1,0 +1,12 @@
+node_modules
+src
+*.test.*
+.git
+.github
+coverage
+*.md
+\!README.md
+tsconfig.json
+vitest.config.ts
+smithery.yaml
+DIRECTORY-SUBMISSIONS.md
